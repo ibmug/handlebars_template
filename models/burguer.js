@@ -1,5 +1,5 @@
 //Lets import the ORM
-
+//Esto de las cb functions es para 
 var orm = require("../config/orm.js");
 
 var hamburguer = {

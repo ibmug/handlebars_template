@@ -4,7 +4,7 @@ var router = express.Router();
 
 //import the file from models that handles whatever it is that we're going to use.
 
-var burguersModel = require("../models/burguers.js");
+var burguersModel = require("../models/burguer.js");
 
 //Create routes
 
@@ -16,6 +16,10 @@ router.get("/", function(req,res){
 
 router.post("/api/burguers",function(req,res){
 //Posting
+    burguersModel.update(function(result){
+
+    });
+
 });
 
 
