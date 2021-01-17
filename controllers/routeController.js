@@ -22,21 +22,43 @@ burguersModel.all(function(data) {
 
 router.post("/api/burguers",function(req,res){
 //Posting
-    console.log(req.body.uName + req.body.uActive);
-    burguersModel.create(["uName","uActive"],[req.body.uName, req.body.uActive],function(result){
+    burguersModel.create([
+        "uName","uActive"
+    ],[
+        req.body.uName, req.body.uActive
+    ],function(result){
         res.json({id: result.insertId});
     });
-
 });
 
 
 router.put("/api/burguers/:id",function(req,res){
     //Put request
-    var id = req.params.id;
+    var condition = "uID = "+req.params.id;
+    console.log(req.body);
+    //we need to check what uactive is....
+    burguersModel.update({uActive : req.body.uActive},condition,function(result){
+        if (result.affectedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+          } else {
+            res.status(200).end();
+          }
+    });
 });
 
 router.delete("/api/burguers/:id",function(req,res){
     //Delete them burguers
+    var condition  = "uID = " + req.params.id;
+    burguersModel.delete(condition,function(result){
+        if (result.affectedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+          } else {
+            res.status(200).end();
+          }
+    });
+    
 });
 
 

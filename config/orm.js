@@ -55,8 +55,8 @@ function objToSql(ob) {
         });
     },
     create: function(table, cols, vals, cb){
-        console.log(table+cols+vals);
-        var q = "INSERT INTO" + table;
+        console.log("Table: "+table+"Cols: "+ cols+"Vals: "+vals);
+        var q = "INSERT INTO " + table;
         q += " ("+cols.toString()+") ";
         //Remember our helper function? Here's inserting the amount of values/columns there are
         q += "VALUES ("+printQuestionMarks(vals.length)+") ";
@@ -70,7 +70,7 @@ function objToSql(ob) {
     },
     //An example of objColVals would be {name: John, LastName: Johnson, Active:true}
     update: function(table,objColVals,condition,cb){
-        var q = "UPDATE "+ table;
+        var q = "UPDATE "+ table+" SET ";
         //Remember our other helper function? Converts this to 
         q += objToSql(objColVals);
         q += " WHERE ";
@@ -84,10 +84,10 @@ function objToSql(ob) {
             cb(result);
         });
     },
-    delete: function(){
+    delete: function(table, condition, cb){
         var q = "DELETE FROM " + table;
         q += " WHERE ";
-        q += "condition";
+        q += condition;
 
         console.log(q);
 

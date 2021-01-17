@@ -1,9 +1,9 @@
 <li>
 	{{uName}}
 
-	<button class="change-status" data-id="{{id}}" data-newstatus="{{status}}">
-		{{#if status}}ITADAKIMASU!!{{else}}Lets order it again!{{/if}}
+	<button class="change-status" data-id="{{uID}}" data-newstatus="{{uActive}}">
+		{{#if uActive}}Lets order it again!!!{{else}}Lets EAT!!{{/if}}
 	</button>
 
-	<button class="delete-burguer" data-id="{{this.id}}">DELETE!</button>
+	<button class="remove-burguer" data-id="{{this.uID}}">DELETE!</button>
 </li>

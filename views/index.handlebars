@@ -4,8 +4,8 @@
 
 <ul>
   {{#each burguers}}
-    {{#unless status}}
-      {{> burguers/burguer-block status=true}}
+    {{#unless uActive}}
+      {{> burguers/burguer-block uActive=false}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -14,8 +14,8 @@
 
 <ul>
   {{#each burguers}}
-    {{#if status}}
-      {{> burguers/burguer-block status=false}}
+    {{#if uActive}}
+      {{> burguers/burguer-block uActive=true}}
     {{/if}}
   {{/each}}
 </ul>

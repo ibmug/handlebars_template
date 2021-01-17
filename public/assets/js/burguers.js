@@ -10,7 +10,7 @@ $(function(){
         var id = $(this).data("id");
         var newStatus = $(this).data("newstatus");
         var newStatusState = {
-            uStatus: newStatus
+            uActive: !newStatus
         };
 
         //Lets send the request:
@@ -19,7 +19,7 @@ $(function(){
             data:newStatusState,
         }).then(
             function(){
-                console.log("Changed status to: ", newStatus);
+                console.log("Changed status to: ", newStatusState.uActive);
                 //5Reload the page
                 location.reload();
             }
@@ -34,7 +34,7 @@ $(function(){
             uName: $("#ca").val().trim(),
             uActive : false
         };
-
+        
         $.ajax("/api/burguers",{
             type: "POST",
             data: newUser

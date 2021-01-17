@@ -9,17 +9,17 @@ var hamburguer = {
         });
     },
     create:function(cols,vals,cb){
-        orm.create("users", function(objColVals,condition,cb){
+        orm.create("users",cols,vals, function(res){
             cb(res);
         });
     },
     update:function(objColVals,condition,cb){
-        orm.update("users",function(objColVals,condition,cb){
-                cb(res);
+        orm.update("users",objColVals,condition,function(res){
+            cb(res);
         });
     },
-    delete:function(objColsVals,condition,cb){
-        orm.delete("users",function(objColVals,condition,cb){
+    delete:function(condition,cb){
+        orm.delete("users",condition,function(res){
             cb(res);
         });
     }
