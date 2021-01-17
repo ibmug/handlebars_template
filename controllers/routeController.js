@@ -11,13 +11,20 @@ var burguersModel = require("../models/burguer.js");
 router.get("/", function(req,res){
 
 //Getting
-
+burguersModel.all(function(data) {
+    var hbsObject = {
+      burguers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+    });
 });
 
 router.post("/api/burguers",function(req,res){
 //Posting
-    burguersModel.update(function(result){
-
+    console.log(req.body.uName + req.body.uActive);
+    burguersModel.create(["uName","uActive"],[req.body.uName, req.body.uActive],function(result){
+        res.json({id: result.insertId});
     });
 
 });

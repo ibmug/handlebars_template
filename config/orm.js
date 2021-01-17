@@ -45,6 +45,7 @@ function objToSql(ob) {
 //all should get a select*fromwhatevertable
     all:function(tableInput,cb){
         var queryString = "SELECT * FROM " + tableInput + ";";
+        console.log(queryString);
 
         connection.query(queryString, function(err, result){
             if(err){
@@ -54,6 +55,7 @@ function objToSql(ob) {
         });
     },
     create: function(table, cols, vals, cb){
+        console.log(table+cols+vals);
         var q = "INSERT INTO" + table;
         q += " ("+cols.toString()+") ";
         //Remember our helper function? Here's inserting the amount of values/columns there are

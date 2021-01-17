@@ -31,8 +31,8 @@ $(function(){
         event.preventDefault();
 
         var newUser = {
-            name= $("uname").val().trim(),
-            uactive = $("[name=status]:checked").val().trim()
+            uName: $("#ca").val().trim(),
+            uActive : false
         };
 
         $.ajax("/api/burguers",{
@@ -50,6 +50,7 @@ $(function(){
     //Delete function
     $(".remove-burguer").on("click", function(event){
         var id = $(this).data("id");
+        console.log("id" + id);
 
         //Send the delete request
         $.ajax("/api/burguers/" + id,{
